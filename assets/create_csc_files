@@ -1,0 +1,17 @@
+#!/system/bin/sh
+export PATH=/system/bin:$PATH
+
+mount -o rw,remount /system
+mount -t rootfs -o remount,rw rootfs
+
+if [ ! -d /system/csc ]; then
+mkdir /system/csc
+fi
+
+if [ ! -f /system/csc/feature.xml.bak ]; then
+cp -f /system/csc/feature.xml /system/csc/feature.xml.bak
+fi
+
+if [ ! -f /system/csc/feature.xml ]; then
+touch /system/csc/feature.xml
+fi
