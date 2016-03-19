@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen android:key="prefsRoot"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <de.robv.android.xposed.library.ui.TextViewPreference android:title="" android:selectable="false" android:key="xtHeader" />
+    <de.robv.android.xposed.library.ui.SeparatorPreference height="3" />
+    <PreferenceScreen android:icon="@drawable/notification" android:title="@string/statusbar" android:key="statusbarKey">
+        <PreferenceCategory android:title="@string/statusbar">
+            <CheckBoxPreference android:title="@string/expand_all_notifications" android:key="expandNotifications" android:summary="@string/auto_expand_all_notifications_while_shown" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/show_data_usage" android:key="showDataUsuage" android:summary="@string/show_your_current_data_usage" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/show_wireless_charging_popup" android:key="showWirelessChargerInfoPopUp" android:summary="@string/show_wireless_charger_information_popup" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/hide_full_battery_notification" android:key="hideFullBatteryNotification" android:defaultValue="false" android:summaryOn="@string/hide_full_battery_notification_hidden" android:summaryOff="@string/hide_full_battery_notification_shown" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/clock">
+            <de.robv.android.xposed.library.ui.ListPreferenceFixedSummary android:entries="@array/clock_position_entries" android:title="@string/clock_position" android:key="clockPosition" android:summary="@string/clock_position_summary" android:defaultValue="Right" android:entryValues="@array/clock_position_values" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/signal_icons">
+            <CheckBoxPreference android:title="@string/display_4g_for_lte" android:key="show4GForLTE" android:summary="@string/show_4g_instead_of_lte_when_connected" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/show_no_sim_notification" android:key="showNOSim" android:summary="@string/show_sim_card_notification_when_no_sim" android:defaultValue="false" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/status_icons">
+            <CheckBoxPreference android:title="@string/hide_smart_stay_icon" android:key="hideSmartStayIcon" android:defaultValue="false" android:summaryOn="@string/hide_smart_stay_icon_on" android:summaryOff="@string/hide_smart_stay_icon_off" />
+            <CheckBoxPreference android:title="@string/hide_alarm_icon" android:key="hideAlarmClockIcon" android:defaultValue="false" android:summaryOn="@string/hide_alarm_icon_on" android:summaryOff="@string/hide_alarm_icon_off" />
+            <CheckBoxPreference android:title="@string/hide_nfc_icon" android:key="hideNfcIcon" android:defaultValue="false" android:summaryOn="@string/hide_nfc_icon_on" android:summaryOff="@string/hide_nfc_icon_off" android:disableDependentsState="true" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/quick_settings">
+            <de.robv.android.xposed.library.ui.ValueSeekBarPreference android:title="@string/quick_setting_columns" android:key="quickSettingsColumns" android:summary="@string/quick_setting_columns_summary" android:defaultValue="5" displayFormat="Плиток: %d" max="8" min="4" />
+            <CheckBoxPreference android:title="@string/collapse_panel_after_toggle" android:key="quickSettingsCollapseOnToggle" android:defaultValue="false" android:summaryOn="@string/notification_panel_closes_after_toggle_press" android:summaryOff="@string/notification_panels_stays_open_after_toggle_press" />
+            <CheckBoxPreference android:title="@string/quick_settings_disable_airplane_mode_dialog" android:key="disableAirplaneModeDialog" android:defaultValue="false" android:summaryOn="@string/quick_settings_disable_airplane_mode_dialog_on" android:summaryOff="@string/quick_settings_disable_airplane_mode_dialog_off" />
+            <CheckBoxPreference android:title="@string/quick_settings_disable_bluetooth_scan_dialog" android:key="disableBluetoothScanDialog" android:summary="@string/quick_settings_disable_bluetooth_scan_dialog_sum" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/show_data_off_popup" android:key="showDataPopUp" android:summary="@string/show_a_warning_popup_when" android:defaultValue="false" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:icon="@drawable/lockscreen" android:title="@string/lockscreen" android:key="lockscreenKey">
+        <PreferenceCategory android:title="@string/pin_unlock">
+            <CheckBoxPreference android:title="@string/quick_pin_unlock" android:key="quickPinUnlockEnabled" android:summary="@string/quick_pin_unlock_summary" />
+            <de.robv.android.xposed.library.ui.ValueSeekBarPreference android:title="@string/pin_length" android:key="PINSize" android:summary="@string/select_the_number_of_digits_used_on_your_pin" android:dependency="quickPinUnlockEnabled" android:defaultValue="4" displayFormat="Знаков: %d" max="16" min="4" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:icon="@drawable/sound" android:title="@string/sound" android:key="soundKey">
+        <PreferenceCategory android:title="@string/sound">
+            <CheckBoxPreference android:title="@string/disable_loud_volume" android:key="disableLoudVolumeWarning" android:defaultValue="false" android:summaryOn="@string/disable_loud_volume_disabled" android:summaryOff="@string/disable_loud_volume_enabled" />
+            <CheckBoxPreference android:title="@string/long_press_skip" android:key="longPressTrackSkip" android:summary="@string/long_press_skip_summary" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/auto_expand_volume_panel" android:key="autoExpandVolumePanel" android:summary="@string/auto_expand_volume_panel_sum" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/semi_transparent_volume_panel" android:key="semiTransparentVolumePanel" android:summary="@string/reduce_volume_panel_opacity" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/disable_camera_shutter_sound" android:key="disableCameraShutterSound" android:defaultValue="false" android:summaryOn="@string/camera_shutter_sound_disabled" android:summaryOff="@string/camera_shutter_sound_enabled" />
+            <CheckBoxPreference android:title="@string/disable_boot_sound" android:key="disableBootSound" android:defaultValue="false" android:summaryOn="@string/boot_sound_disabled" android:summaryOff="@string/boot_sound_enabled" />
+            <CheckBoxPreference android:title="@string/disable_volume_control_sound" android:key="disableVolumeControlSound" android:summary="@string/disable_volume_control_sound_while_changing_sounds" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/disable_low_battery_sound" android:key="disableLowBatterySound" android:summary="@string/disable_low_battery_sound" android:defaultValue="false" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:icon="@drawable/system" android:title="@string/system" android:key="systemKey">
+        <PreferenceCategory android:title="@string/system">
+            <CheckBoxPreference android:title="@string/disable_scrolling_cache" android:key="disableScrollingCache" android:summary="@string/disable_scrolling_cache_sum" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/disable_tether_provisioning" android:key="disableTetherProvisioning" android:defaultValue="false" android:summaryOn="@string/disable_tether_provisioning_on" android:summaryOff="@string/disable_tether_provisioning_off" />
+            <de.robv.android.xposed.library.ui.ValueSeekBarPreference android:title="@string/wifi_ap_clients_number" android:key="wifiAPClients" android:summary="@string/set_the_the_number_of_maximum_wifi_ap_clients" android:defaultValue="4" displayFormat="Клиентов: %d" max="10" min="1" />
+            <de.robv.android.xposed.library.ui.IntegerListPreference android:entries="@array/nfc_behavior_entries" android:title="@string/nfc_behavior" android:key="nfcBehavior" android:summary="@string/nfc_behavior_summary" android:defaultValue="0" android:entryValues="@array/nfc_behavior_values" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/browser">
+            <CheckBoxPreference android:title="@string/add_terminate_button_to_the_browser" android:key="addBrowserTerminateButton" android:defaultValue="false" android:summaryOn="@string/terminate_button_added_to_the_browser_menu" android:summaryOff="@string/no_terminate_button_on_the_browser_menu" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/camera_and_gallery">
+            <CheckBoxPreference android:title="@string/enable_camera_during_call" android:key="enableCameraDuringCall" android:defaultValue="false" android:summaryOn="@string/camera_enabled_during_call" android:summaryOff="@string/camera_disabed_during_call" />
+            <CheckBoxPreference android:title="@string/disable_temperature_checks" android:key="disableTemperatureChecks" android:summary="@string/disable_temparature_warnings_on_the_recording" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/disable_camera_low_battery_warning" android:key="disbaleLowBatteryCloseWarningLevel" android:defaultValue="false" android:summaryOn="@string/camera_low_battery_warning_disabled" android:summaryOff="@string/camera_low_battery_warning_enabled" android:disableDependentsState="true" />
+            <de.robv.android.xposed.library.ui.ValueSeekBarPreference android:title="@string/critical_battery_level" android:key="configCriticalBatteryWarningLevel" android:summary="@string/set_camera_critical_battery_level_warning" android:dependency="disbaleLowBatteryCloseWarningLevel" android:defaultValue="5" displayFormat="%d%%" max="100" min="1" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/multi_window" android:key="MVTweaks">
+            <Preference android:title="@string/select_multi_window_apps" android:key="selectMwApps" android:summary="@string/select_multi_window_apps_summary" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/launcher">
+            <CheckBoxPreference android:title="@string/launcher_scroll_wallpaper" android:key="launcherScrollWallpaper" android:defaultValue="false" android:summaryOn="@string/launcher_scroll_wallpaper_on" android:summaryOff="@string/launcher_scroll_wallpaper_off" android:disableDependentsState="true" />
+            <CheckBoxPreference android:title="@string/disable_launcher_page_rotation" android:key="disableLauncherPageRotation" android:defaultValue="false" android:summaryOn="@string/launcher_page_rotation_disabled" android:summaryOff="@string/launcher_page_rotation_enabled" />
+            <CheckBoxPreference android:title="@string/hide_dock_app_labels" android:key="hideDockLabels" android:defaultValue="false" android:summaryOn="@string/dock_app_labels_are_hidden" android:summaryOff="@string/dock_app_labels_are_shown" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/buttons" android:key="homebuttons">
+            <CheckBoxPreference android:title="@string/disable_wake_home_button" android:key="disableWakeOnHome" android:defaultValue="false" android:summaryOn="@string/disable_wake_home_button_off" android:summaryOff="@string/disable_wake_home_button_on" />
+            <CheckBoxPreference android:title="@string/enable_long_back_kills_app" android:key="enableLongBackKill" android:defaultValue="false" android:summaryOn="@string/enable_long_back_kills_app_on" android:summaryOff="@string/enable_long_back_kills_app_off" />
+            <Preference android:title="@string/long_back_app_white_liste" android:key="enableLongBackKillWhiteList" android:summary="@string/long_back_app_white_liste_sumary" android:dependency="enableLongBackKill" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:icon="@drawable/phone" android:title="@string/phone" android:key="phoneKey">
+        <PreferenceCategory android:title="@string/phone" android:key="phoneKeyCat">
+            <CheckBoxPreference android:title="@string/enable_call_add" android:key="enableCallAdd" android:defaultValue="false" android:summaryOn="@string/enable_call_add_on" android:summaryOff="@string/enable_call_add_off" />
+            <CheckBoxPreference android:title="@string/enable_call_recording_menu" android:key="enableCallRecordingMenu" android:dependency="enableCallAdd" android:defaultValue="false" android:summaryOn="@string/call_recording_menu_enabled" android:summaryOff="@string/call_recording_menu_disabled" />
+            <CheckBoxPreference android:title="@string/auto_call_recording" android:key="enableAutoCallRecording" android:summary="@string/enable_automatic_call_recording" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/disable_call_ring_increasing" android:key="disableEscalatingRingtone" android:defaultValue="false" android:summaryOn="@string/disable_call_ring_increasing_on" android:summaryOff="@string/disable_call_ring_increasing_off" />
+            <CheckBoxPreference android:title="@string/disable_call_number_formatting" android:key="disableNumberFormating" android:defaultValue="false" android:summaryOn="@string/call_number_formatting_disabled" android:summaryOff="@string/call_number_formatting_enabled" />
+            <CheckBoxPreference android:title="@string/enable_call_button_on_call_logs" android:key="enableCallButtonLogs" android:defaultValue="false" android:summaryOn="@string/call_button_enabled_on_call_logs" android:summaryOff="@string/call_button_hidden_on_call_logs" />
+            <CheckBoxPreference android:title="@string/fix_call_button_dpi" android:key="fixCallButtonLogs" android:summary="@string/fix_call_icon_size_use_it_only_if_you_get_a_bad" android:dependency="enableCallButtonLogs" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/enable_unlimited_contacts_joining" android:key="unlimittedContactsJoining" android:defaultValue="false" android:summaryOn="@string/unlimited_contacts_accounts_joining" android:summaryOff="@string/default_contacts_joining_limit" />
+            <CheckBoxPreference android:title="@string/use_separate_address_field" android:key="useSeparateAddressField" android:summary="@string/separate_address_field_used" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/disable_account_icons" android:key="disableAccountIconsList" android:defaultValue="false" android:summaryOn="@string/account_icons_disabled_on_contact_list" android:summaryOff="@string/account_icons_enabled_on_contact_list" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:icon="@drawable/sms" android:title="@string/messaging" android:key="messagingKey">
+        <PreferenceCategory android:title="@string/messaging">
+            <CheckBoxPreference android:title="@string/mms_sms_mms_conversion" android:key="disableSmsToMmsConversion" android:defaultValue="false" android:summaryOn="@string/mms_sms_mms_conversion_on" android:summaryOff="@string/mms_sms_mms_conversion_off" />
+            <CheckBoxPreference android:title="@string/force_mms_connect" android:key="forceMMSConnect" android:summary="@string/force_mms_connect_to_receive_mms" android:defaultValue="false" />
+            <CheckBoxPreference android:title="@string/enable_automatic_input_mode" android:key="automaticInputMode" android:defaultValue="true" android:summaryOn="@string/automatic_input_mode_enabled" android:summaryOff="@string/automatic_input_mode_disabled" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+    <PreferenceScreen android:icon="@drawable/security" android:title="@string/security" android:key="securityHacks">
+        <PreferenceCategory android:title="@string/email">
+            <CheckBoxPreference android:title="@string/bypass_exchange_security" android:key="disableExchangeLockSecurity" android:defaultValue="false" android:summaryOn="@string/bypass_exchange_security_on" android:summaryOff="@string/bypass_exchange_security_off" />
+        </PreferenceCategory>
+        <PreferenceCategory android:title="@string/system">
+            <CheckBoxPreference android:title="@string/fake_system_status" android:key="makeMeTooLegit" android:defaultValue="true" android:summaryOn="@string/status_official" android:summaryOff="@string/status_custom" />
+            <CheckBoxPreference android:title="@string/disable_knox_notifications" android:key="disableTIMA" android:summary="@string/disable_seandroid_knox_notifications_msg" android:defaultValue="true" />
+        </PreferenceCategory>
+    </PreferenceScreen>
+</PreferenceScreen>
